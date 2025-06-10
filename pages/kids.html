@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kids Collection - House of Preethi</title>
+
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #b7e0f7, #ffcfd2);
+      color: #222;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    /* Bubbles */
+    .bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bubbles span {
+      position: absolute;
+      display: block;
+      width: 30px;
+      height: 30px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      animation: moveBubbles 25s linear infinite;
+      bottom: -150px;
+      backdrop-filter: blur(5px);
+    }
+
+    .bubbles span:nth-child(1) { left: 10%; width: 20px; height: 20px; animation-duration: 20s; }
+    .bubbles span:nth-child(2) { left: 20%; width: 30px; height: 30px; animation-duration: 22s; }
+    .bubbles span:nth-child(3) { left: 25%; width: 15px; height: 15px; animation-duration: 17s; }
+    .bubbles span:nth-child(4) { left: 40%; width: 25px; height: 25px; animation-duration: 25s; }
+    .bubbles span:nth-child(5) { left: 70%; width: 20px; height: 20px; animation-duration: 18s; }
+    .bubbles span:nth-child(6) { left: 80%; width: 30px; height: 30px; animation-duration: 23s; }
+    .bubbles span:nth-child(7) { left: 90%; width: 15px; height: 15px; animation-duration: 19s; }
+    .bubbles span:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-duration: 24s; }
+    .bubbles span:nth-child(9) { left: 60%; width: 20px; height: 20px; animation-duration: 21s; }
+    .bubbles span:nth-child(10) { left: 30%; width: 15px; height: 15px; animation-duration: 26s; }
+
+    @keyframes moveBubbles {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-1000px) scale(0.5); }
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.3);
+      backdrop-filter: blur(12px);
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-bottom: 5px;
+    }
+
+    .logo h1 {
+      font-family: 'Lucida Handwriting', cursive;
+      font-size: 14px;
+      color: #003366;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover, .product-card button:hover {
+      background-color: #d66f9b;
+      color: white;
+    }
+
+    nav ul li a i {
+      margin-right: 5px;
+    }
+
+    .header-icons a {
+      margin-left: 20px;
+      font-size: 20px;
+      color: #333;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .header-icons a:hover {
+      color: #ff6f61;
+    }
+
+    /* Banner */
+    .page-banner {
+      background: url('../images/background/skincarebg.jpg') no-repeat center/cover;
+      padding: 80px 20px;
+      text-align: center;
+      color: #fff;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 60px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
+
+    .product-card h3 {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .product-card p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .product-card button {
+      background: linear-gradient(to right, #d66f9b, #9b66d6);
+      color: white;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    /* Social Media */
+    .social-icons {
+      margin: 30px 0;
+      text-align: center;
+      z-index: 1;
+      position: relative;
+    }
+
+    .social-icons a {
+      font-size: 1.7rem;
+      color: #333;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: #ff6f61;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+      border-top: 1px solid rgba(255,255,255,0.3);
+      z-index: 1;
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Bubbles -->
+<div class="bubbles">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="logo">
+    <img src="../images/background/logo.webp" alt="House of Preethi Logo">
+    <h1>House of Preethi</h1>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="makeup.html"><i class="fas fa-paint-brush"></i> Makeup</a></li>
+      <li><a href="skincare.html" class="active"><i class="fas fa-leaf"></i> Skincare</a></li>
+      <li><a href="women.html"><i class="fas fa-female"></i> Women</a></li>
+      <li><a href="men.html"><i class="fas fa-male"></i> Men</a></li>
+      <li><a href="kids.html"><i class="fas fa-child"></i> Kids</a></li>
+      <li><a href="books.html"><i class="fas fa-book"></i> Books</a></li>
+      <li><a href="food.html"><i class="fas fa-utensils"></i> Food</a></li>
+      <li><a href="grocery.html"><i class="fas fa-shopping-basket"></i> Grocery</a></li>
+    </ul>
+  </nav>
+  <div class="header-icons">
+    <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+    <a href="login.html"><i class="fas fa-user"></i></a>
+  </div>
+</header>
+
+<!-- Page Banner -->
+<section class="page-banner">
+  <h1>Kids Collection</h1>
+</section>
+<section class="product-grid">
+    
+<div class="product-card">
+        <img src="../images/products/kids1.jpg" alt="Toy Car">
+        <h3>Electric Toy Car</h3>
+        <p>₹899</p>
+        <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+        <img src="../images/products/kids2.webp" alt="Stationery Kit">
+        <h3>Stationery Kit</h3>
+        <p>₹499</p>
+        <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+        <img src="../images/products/kids3.jpg" alt="Story Books">
+        <h3>Story Book Set</h3>
+        <p>₹799</p>
+        <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+        <img src="../images/products/kids4.jpg" alt="Soft Toy">
+        <h3>Soft Teddy Bear</h3>
+        <p>₹599</p>
+        <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+        <img src="../images/products/kids5.avif" alt="Building Blocks">
+        <h3>Building Blocks Set</h3>
+        <p>₹999</p>
+        <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+        <img src="../images/products/kids6.jpg" alt="Coloring Set">
+        <h3>Coloring Set</h3>
+        <p>₹349</p>
+        <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+        <img src="../images/products/kids7.webp" alt="Puzzle Game">
+        <h3>Animal Puzzle Game</h3>
+        <p>₹449</p>
+        <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+        <img src="../images/products/kids8.jpg" alt="Remote Control Helicopter">
+        <h3>Remote Control Helicopter</h3>
+        <p>₹1499</p>
+        <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+        <img src="../images/products/kids9.webp" alt="Kids Drawing Board">
+        <h3>Magnetic Drawing Board</h3>
+        <p>₹699</p>
+        <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+        <img src="../images/products/kids10.jpg" alt="Plush Animal Set">
+        <h3>Mini Plush Animal Set</h3>
+        <p>₹399</p>
+        <button>Add to Cart</button>
+    </div>
+
+</section>
+    
+</div>
+
+
+<!-- Social Media Icons -->
+<div class="social-icons">
+  <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+  <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+  <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 House of Preethi. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

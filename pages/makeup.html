@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Makeup - House of Preethi</title>
+
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #b7e0f7, #ffcfd2);
+      color: #222;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    /* Bubbles */
+    .bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bubbles span {
+      position: absolute;
+      display: block;
+      width: 30px;
+      height: 30px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      animation: moveBubbles 25s linear infinite;
+      bottom: -150px;
+      backdrop-filter: blur(5px);
+    }
+
+    .bubbles span:nth-child(1) { left: 10%; width: 20px; height: 20px; animation-duration: 20s; }
+    .bubbles span:nth-child(2) { left: 20%; width: 30px; height: 30px; animation-duration: 22s; }
+    .bubbles span:nth-child(3) { left: 25%; width: 15px; height: 15px; animation-duration: 17s; }
+    .bubbles span:nth-child(4) { left: 40%; width: 25px; height: 25px; animation-duration: 25s; }
+    .bubbles span:nth-child(5) { left: 70%; width: 20px; height: 20px; animation-duration: 18s; }
+    .bubbles span:nth-child(6) { left: 80%; width: 30px; height: 30px; animation-duration: 23s; }
+    .bubbles span:nth-child(7) { left: 90%; width: 15px; height: 15px; animation-duration: 19s; }
+    .bubbles span:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-duration: 24s; }
+    .bubbles span:nth-child(9) { left: 60%; width: 20px; height: 20px; animation-duration: 21s; }
+    .bubbles span:nth-child(10) { left: 30%; width: 15px; height: 15px; animation-duration: 26s; }
+
+    @keyframes moveBubbles {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-1000px) scale(0.5); }
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.3);
+      backdrop-filter: blur(12px);
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-bottom: 5px;
+    }
+
+    .logo h1 {
+      font-family: 'Lucida Handwriting', cursive;
+      font-size: 14px;
+      color: #003366;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover, .product-card button:hover {
+      background-color: #d66f9b;
+      color: white;
+    }
+
+    nav ul li a i {
+      margin-right: 5px;
+    }
+
+    .header-icons a {
+      margin-left: 20px;
+      font-size: 20px;
+      color: #333;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .header-icons a:hover {
+      color: #ff6f61;
+    }
+
+    /* Banner */
+    .page-banner {
+      background: url('../images/background/makeupbg.jpg') no-repeat center/cover;
+      padding: 80px 20px;
+      text-align: center;
+      color: #fff;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 60px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
+
+    .product-card h3 {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .product-card p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .product-card button {
+      background: linear-gradient(to right, #d66f9b, #9b66d6);
+      color: white;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    /* Social Media */
+    .social-icons {
+      margin: 30px 0;
+      text-align: center;
+      z-index: 1;
+      position: relative;
+    }
+
+    .social-icons a {
+      font-size: 1.7rem;
+      color: #333;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: #ff6f61;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+      border-top: 1px solid rgba(255,255,255,0.3);
+      z-index: 1;
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Bubbles -->
+  <div class="bubbles">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="../images/background/logo.webp" alt="House of Preethi Logo">
+      <h1>House of Preethi</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="makeup.html"><i class="fas fa-paint-brush"></i> Makeup</a></li>
+        <li><a href="skincare.html" class="active"><i class="fas fa-leaf"></i> Skincare</a></li>
+        <li><a href="women.html"><i class="fas fa-female"></i> Women</a></li>
+        <li><a href="men.html"><i class="fas fa-male"></i> Men</a></li>
+        <li><a href="kids.html"><i class="fas fa-child"></i> Kids</a></li>
+        <li><a href="books.html"><i class="fas fa-book"></i> Books</a></li>
+        <li><a href="food.html"><i class="fas fa-utensils"></i> Food</a></li>
+        <li><a href="grocery.html"><i class="fas fa-shopping-basket"></i> Grocery</a></li>
+      </ul>
+    </nav>
+    <div class="header-icons">
+      <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+      <a href="login.html"><i class="fas fa-user"></i></a>
+    </div>
+  </header>
+
+  <!-- Page Banner -->
+  <section class="page-banner" style="background: url('../images/background/makeupbg.jpg') no-repeat center center/cover;">
+    <h1>GlamUp Beauty Essentials</h1>
+  </section>
+
+  <!-- Product Grid -->
+<div class="product-grid">
+  <div class="product-card">
+    <img src="../images/products/makeup1.avif" alt="Matte Lipstick">
+    <h3>Matte Lipstick</h3>
+    <p>₹499</p>
+    <button onclick="addToCart('Matte Lipstick', 499, '../images/products/makeup1.avif')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup2.jpg" alt="Liquid Foundation">
+    <h3>Liquid Foundation</h3>
+    <p>₹799</p>
+    <button onclick="addToCart('Liquid Foundation', 799, '../images/products/makeup2.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup3.jpg" alt="Eyeshadow Palette">
+    <h3>Eyeshadow Palette</h3>
+    <p>₹1199</p>
+    <button onclick="addToCart('Eyeshadow Palette', 1199, '../images/products/makeup3.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup4.jpg" alt="Smudge Proof Kajal">
+    <h3>Smudge Proof Kajal</h3>
+    <p>₹299</p>
+    <button onclick="addToCart('Smudge Proof Kajal', 299, '../images/products/makeup4.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup5.webp" alt="Pressed Blush">
+    <h3>Pressed Blush</h3>
+    <p>₹599</p>
+    <button onclick="addToCart('Pressed Blush', 599, '../images/products/makeup5.webp')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup6.jpg" alt="Shimmer Highlighter">
+    <h3>Shimmer Highlighter</h3>
+    <p>₹799</p>
+    <button onclick="addToCart('Shimmer Highlighter', 799, '../images/products/makeup6.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup7.jpg" alt="Volumizing Mascara">
+    <h3>Volumizing Mascara</h3>
+    <p>₹499</p>
+    <button onclick="addToCart('Volumizing Mascara', 499, '../images/products/makeup7.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup8.jpg" alt="Glossy Lip Gloss">
+    <h3>Glossy Lip Gloss</h3>
+    <p>₹350</p>
+    <button onclick="addToCart('Glossy Lip Gloss', 350, '../images/products/makeup8.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup9.jpg" alt="Sun-Kissed Bronzer">
+    <h3>Sun-Kissed Bronzer</h3>
+    <p>₹650</p>
+    <button onclick="addToCart('Sun-Kissed Bronzer', 650, '../images/products/makeup9.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup10.avif" alt="Makeup Setting Spray">
+    <h3>Makeup Setting Spray</h3>
+    <p>₹550</p>
+    <button onclick="addToCart('Makeup Setting Spray', 550, '../images/products/makeup10.avif')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup11.webp" alt="Precision Lip Liner">
+    <h3>Precision Lip Liner</h3>
+    <p>₹299</p>
+    <button onclick="addToCart('Precision Lip Liner', 299, '../images/products/makeup11.webp')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup12.jpg" alt="Glossy Nail Polish">
+    <h3>Glossy Nail Polish</h3>
+    <p>₹199</p>
+    <button onclick="addToCart('Glossy Nail Polish', 199, '../images/products/makeup12.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup13.jpg" alt="Blurring Primer">
+    <h3>Blurring Primer</h3>
+    <p>₹799</p>
+    <button onclick="addToCart('Blurring Primer', 799, '../images/products/makeup13.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup14.jpg" alt="Hydrating Lip Balm">
+    <h3>Hydrating Lip Balm</h3>
+    <p>₹199</p>
+    <button onclick="addToCart('Hydrating Lip Balm', 199, '../images/products/makeup14.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup15.jpg" alt="Contour Stick">
+    <h3>Contour Stick</h3>
+    <p>₹799</p>
+    <button onclick="addToCart('Contour Stick', 799, '../images/products/makeup15.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup16.jpg" alt="Makeup Remover Wipes">
+    <h3>Makeup Remover Wipes</h3>
+    <p>₹150</p>
+    <button onclick="addToCart('Makeup Remover Wipes', 150, '../images/products/makeup16.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup17.jpg" alt="BB Cream">
+    <h3>BB Cream</h3>
+    <p>₹499</p>
+    <button onclick="addToCart('BB Cream', 499, '../images/products/makeup17.jpg')">Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="../images/products/makeup18.jpg" alt="Hair Spray">
+    <h3>Hair Spray</h3>
+    <p>₹799</p>
+    <button onclick="addToCart('Hair Spray', 799, '../images/products/makeup18.jpg')">Add to Cart</button>
+  </div>
+</div>
+
+
+  <!-- Social Media -->
+  <div class="social-icons">
+    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 House of Preethi. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Add to cart functionality (to be implemented)
+    function addToCart(productName, productPrice, productImage) {
+      alert(productName + " has been added to your cart!");
+      // This is where you would handle the cart logic (storing cart data in localStorage or elsewhere)
+    }
+  </script>
+</body>
+</html>

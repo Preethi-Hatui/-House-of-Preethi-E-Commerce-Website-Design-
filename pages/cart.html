@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Cart</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #b7e0f7, #ffcfd2);
+            color: #222;
+            overflow-x: hidden;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px 30px;
+            text-align: center;
+            z-index: 100;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        header nav ul li {
+            display: inline-block;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        header nav ul li a:hover, header nav ul li a.active {
+            background-color: #d66f9b;
+            color: white;
+        }
+
+        main {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        #cart-items-list {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .cart-item .item-info {
+            flex: 1;
+            padding: 0 15px;
+        }
+
+        .cart-item .item-info h3 {
+            font-size: 18px;
+        }
+
+        .cart-item .item-info p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .cart-item .item-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cart-item .item-actions button {
+            background-color: #d66f9b;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cart-item .item-actions button:hover {
+            background-color: #9b66d6;
+        }
+
+        .total-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+
+        .checkout-btn {
+            background-color: #d66f9b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            background-color: #9b66d6;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 50px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+
+        .logo h1 {
+            font-family: 'Lucida Handwriting', cursive;
+            font-size: 14px;
+            color: #003366;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Social Media */
+        .social-icons {
+            margin: 30px 0;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .social-icons a {
+            font-size: 1.7rem;
+            color: #333;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #ff6f61;
+        }
+
+    </style>
+</head>
+<body onload="displayCartItems()">
+<!-- Header -->
+<header>
+    <div class="logo">
+        <img src="../images/background/logo.webp" alt="House of Preethi Logo">
+        <h1>House of Preethi</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="cart.html" class="active">Cart</a></li>
+            <li><a href="checkout.html">Checkout</a></li>
+            <li><a href="login.html"><i class="fa fa-sign-in"></i>Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Main Content -->
+<main>
+    <h1>Your Shopping Cart</h1>
+
+    <!-- Cart Items Section -->
+    <div id="cart-items-list">
+        <!-- Cart items will be dynamically added here by JavaScript -->
+    </div>
+
+    <!-- Total Price Section -->
+    <div class="total-price">
+        <span>Total: $0.00</span>
+    </div>
+
+    <!-- Checkout Button -->
+    <button onclick="window.location.href='checkout.html'" class="checkout-btn">Proceed to Checkout</button>
+</main>
+
+<!-- Social Media Icons -->
+<div class="social-icons">
+    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 House of Preethi. All rights reserved.</p>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

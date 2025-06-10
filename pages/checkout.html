@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - House of Preethi</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Core Styles for Checkout Page */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f5f5, #e3e3e3);
+            color: #222;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+        }
+
+        button, .btn {
+            cursor: pointer;
+            font-weight: bold;
+            border: none;
+            outline: none;
+            background: linear-gradient(to right, #d66f9b, #9b66d6);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover, .btn:hover {
+            background-color: #ff6f61;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            margin: 8px 0;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #ff6f61;
+            outline: none;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            text-align: center;
+        }
+
+        header .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        header .logo h1 {
+            font-size: 20px;
+            color: #003366;
+            margin-top: 10px;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #555;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .checkout-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: calc(100vh - 120px);
+            padding: 20px;
+        }
+
+        .checkout-form {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .checkout-form h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .checkout-summary {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            margin-left: 20px;
+        }
+
+        .checkout-summary h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .checkout-summary p {
+            margin: 10px 0;
+        }
+
+        .checkout-summary .total-price {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #ff6f61;
+            margin-top: 20px;
+        }
+
+        .checkout-summary button {
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .footer a {
+            color: #ff6f61;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+		 		/* Bubbles */
+    .bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bubbles span {
+      position: absolute;
+      display: block;
+      width: 30px;
+      height: 30px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      animation: moveBubbles 25s linear infinite;
+      bottom: -150px;
+      backdrop-filter: blur(5px);
+    }
+
+    .bubbles span:nth-child(1) { left: 10%; width: 20px; height: 20px; animation-duration: 20s; }
+    .bubbles span:nth-child(2) { left: 20%; width: 30px; height: 30px; animation-duration: 22s; }
+    .bubbles span:nth-child(3) { left: 25%; width: 15px; height: 15px; animation-duration: 17s; }
+    .bubbles span:nth-child(4) { left: 40%; width: 25px; height: 25px; animation-duration: 25s; }
+    .bubbles span:nth-child(5) { left: 70%; width: 20px; height: 20px; animation-duration: 18s; }
+    .bubbles span:nth-child(6) { left: 80%; width: 30px; height: 30px; animation-duration: 23s; }
+    .bubbles span:nth-child(7) { left: 90%; width: 15px; height: 15px; animation-duration: 19s; }
+    .bubbles span:nth-child(8) { left: 50%; width: 25px; height: 25px; animation-duration: 24s; }
+    .bubbles span:nth-child(9) { left: 60%; width: 20px; height: 20px; animation-duration: 21s; }
+    .bubbles span:nth-child(10) { left: 30%; width: 15px; height: 15px; animation-duration: 26s; }
+
+    @keyframes moveBubbles {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-1000px) scale(0.5); }
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.3);
+      backdrop-filter: blur(12px);
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-bottom: 5px;
+    }
+
+    .logo h1 {
+      font-family: 'Lucida Handwriting', cursive;
+      font-size: 14px;
+      color: #003366;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover, .product-card button:hover {
+      background-color: #d66f9b;
+      color: white;
+    }
+
+    nav ul li a i {
+      margin-right: 5px;
+    }
+
+    .header-icons a {
+      margin-left: 20px;
+      font-size: 20px;
+      color: #333;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .header-icons a:hover {
+      color: #ff6f61;
+    }
+	/* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 60px 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
+
+    .product-card h3 {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .product-card p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .product-card button {
+      background: linear-gradient(to right, #d66f9b, #9b66d6);
+      color: white;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    /* Social Media */
+    .social-icons {
+      margin: 30px 0;
+      text-align: center;
+      z-index: 1;
+      position: relative;
+    }
+
+    .social-icons a {
+      font-size: 1.7rem;
+      color: #333;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: #ff6f61;
+    }
+	
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+<div class="logo">
+    <img src="../images/background/logo.webp" alt="House of Preethi Logo">
+    <h1>House of Preethi</h1>
+  </div>
+    <nav>
+        <ul>
+            <li><a href="../index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="cart.html" class="active">Cart</a></li>
+            
+           
+        </ul>
+    </nav>
+</header>
+
+
+<!-- Checkout Section -->
+<div class="checkout-container">
+    <!-- Checkout Form -->
+    <div class="checkout-form">
+        <h2>Billing Details</h2>
+        <form action="checkout-process.html" method="post">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+            
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="Enter your address" required>
+            
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" placeholder="Enter your city" required>
+            
+            <label for="postal-code">Postal Code:</label>
+            <input type="text" id="postal-code" name="postal-code" placeholder="Enter postal code" required>
+            
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" placeholder="Enter your country" required>
+
+            <button type="submit" class="btn">Proceed to Payment</button>
+        </form>
+    </div>
+
+    <!-- Checkout Summary -->
+    <div class="checkout-summary">
+        <h3>Your Order</h3>
+        <div id="cart-items-list">
+            <!-- Cart items will be dynamically added here using JavaScript -->
+        </div>
+        <p class="total-price">Total Price: $0.00</p>
+        <button class="btn" id="confirm-order-btn">Confirm Order</button>
+    </div>
+</div>
+
+<!-- Social Media Icons -->
+  <div class="social-icons">
+    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 House of Preethi. Crafted with ❤️ All Rights Reserved.</p>
+</footer>
+
+<script>
+// Function to retrieve the cart items from localStorage (or sessionStorage)
+function getCartItems() {
+    return JSON.parse(localStorage.getItem('cart')) || [];
+}
+
+// Function to update the checkout page with cart items and total price
+function updateCheckoutPage() {
+    const cartItems = getCartItems();
+    const cartItemsList = document.getElementById('cart-items-list');
+    const totalPriceElement = document.querySelector('.total-price');
+    
+    // Clear previous cart items
+    cartItemsList.innerHTML = '';
+    
+    let totalPrice = 0;
+
+    // Display each cart item
+    cartItems.forEach(item => {
+        const itemElement = document.createElement('p');
+        itemElement.textContent = `${item.name} - $${item.price}`;
+        cartItemsList.appendChild(itemElement);
+        totalPrice += parseFloat(item.price);
+    });
+
+    // Update the total price
+    totalPriceElement.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+}
+
+// Load cart items and update the page when it's ready
+window.onload = updateCheckoutPage;
+</script>
+
+</body>
+</html>
