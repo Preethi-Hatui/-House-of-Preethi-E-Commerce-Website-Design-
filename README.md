@@ -1,7 +1,5 @@
-# House of Preethi - Ecommerce Frontend Design
+#🏠 House of Preethi - Ecommerce Frontend Design 🛍️✨
 
-![Ecommerce Banner](images/background/logo.webp)  
-*Aesthetic shopping experience with glassmorphic elements*
 
 ## ✨ Project Overview
 A complete frontend design for a multi-category e-commerce website featuring modern UI elements. Currently optimized for laptop/large-screen viewing with plans to add responsive design later.
