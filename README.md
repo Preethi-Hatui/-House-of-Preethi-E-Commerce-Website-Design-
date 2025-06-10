@@ -1,4 +1,4 @@
-🏠#House of Preethi - Ecommerce Frontend Design 🛍️✨
+# 🏠House of Preethi - Ecommerce Frontend Design 🛍️✨
 
 
 ## ✨ Project Overview
