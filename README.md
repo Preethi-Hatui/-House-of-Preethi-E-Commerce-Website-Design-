@@ -16,45 +16,6 @@ A complete frontend design for a multi-category e-commerce website featuring mod
 - **Fonts**: Google Fonts (Poppins)
 - **Visuals**: Gradient backgrounds and floating bubble animations
 
-## 📂 File Structure
-Preethi's Ecommerce-website/
-├── index.html
-├── css/
-│ └── style.css
-├── images/
-│ ├── background/ # Banner images
-│ │ ├── bookbanner.jpg
-│ │ ├── foodbanner.jpg
-│ │ ├── Grocerybanner.jpg
-│ │ ├── logo.webp
-│ │ ├── makeupbanner.jpg
-│ │ └── womenbg.jpg
-│ │
-│ └── products/ # 100+ product images
-│ ├── book[1-20].jpg
-│ ├── makeup[1-18].(jpg/webp/avif)
-│ ├── skincare[1-28].jpg
-│ ├── women[1-20].(jpg/webp)
-│ ├── men[1-10].jpg
-│ ├── kids[1-10].(jpg/webp/avif)
-│ ├── food[1-11].jpg
-│ └── grocery items (dairy, snacks, etc.)
-├── js/
-│ ├── auth.js # Login/signup UI handlers
-│ ├── cart.js # Cart interface logic
-│ └── main.js # Core functionality
-└── pages/
-├── books.html # 20 book products
-├── makeup.html # 18 makeup products
-├── skincare.html # 28 skincare products
-├── women.html # 20 fashion products
-├── men.html # 10 fashion products
-├── kids.html # 10 kids products
-├── food.html # 11 food items
-├── Grocery.html # Grocery items
-├── cart.html # Cart interface
-└── (other pages)
-
 
 
 ## 🖼️ Screenshots
