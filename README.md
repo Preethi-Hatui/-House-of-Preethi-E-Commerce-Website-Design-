@@ -5,7 +5,7 @@
 A complete frontend design for a multi-category e-commerce website featuring modern UI elements. Currently optimized for laptop/large-screen viewing with plans to add responsive design later.
 
 ## Live Demo  
-🔗 **[View Live Demo](https://preethi-hatui.github.io/-House-of-Preethi-E-Commerce-Website-Design-/)** 
+🔗 **[View Live Demo](https://preethi-hatui.github.io/House-of-Preethi-E-Commerce-Website-Design/)** 
 
 
 ## 🛠️ Tech Stack
